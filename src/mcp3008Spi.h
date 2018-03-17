@@ -1,12 +1,12 @@
-/*  SPIdev.h
+/*  mcp3008Spi.h
  *  
  *  Reference: 
  *    github.com/halherta/RaspberryPi-mcp3008Spi
  *
  * */
 
-#ifndef SPIDEV_H
-#define SPIDEV_H
+#ifndef MCP3008SPI_H
+#define MCP3008SPI_H
 
 #include <unistd.h>
 #include <stdint.h>
@@ -18,14 +18,15 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <string>
+#include <iostream>
 
-class SPIdev {
+class mcp3008Spi {
 
   public:
-    SPIdev();
-    SPIdev( std::string devspi, unsigned char spiMode, unsigned int spiSpeed,
+    mcp3008Spi();
+    mcp3008Spi( std::string devspi, unsigned char spiMode, unsigned int spiSpeed,
                 unsigned char spibitsPerWord );
-    ~SPIdev();
+    ~mcp3008Spi();
     int spiWriteRead( unsigned char *data, int length );
 
   private:

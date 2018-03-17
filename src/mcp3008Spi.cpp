@@ -1,14 +1,14 @@
-/*  SPIdev.cpp
+/*  mcp3008Spi.cpp
  *
  *  Reference:
  *    github.com/halherta/RaspberryPi-mcp3008Spi
  *
  * */
 
-#include "SPIdev.h"
+#include "mcp3008Spi.h"
 using namespace std;
 
-int SPIdev::spiOpen( string devspi ) {
+int mcp3008Spi::spiOpen( string devspi ) {
 
   int statusVal = -1;
   this->spifd = open( devspi.c_str(), O_RDWR );
@@ -84,7 +84,7 @@ int SPIdev::spiOpen( string devspi ) {
 
 }
 
-int SPIdev::spiClose() {
+int mcp3008Spi::spiClose() {
 
   int statusVal = -1;
   statusVal = close( this->spifd );
@@ -100,7 +100,7 @@ int SPIdev::spiClose() {
 
 }
 
-int SPIdev::spiWriteRead( unsigned char *data, int length ) {
+int mcp3008Spi::spiWriteRead( unsigned char *data, int length ) {
 
   struct spi_ioc_transfer spi[length];
   int i = 0;
@@ -147,7 +147,7 @@ int SPIdev::spiWriteRead( unsigned char *data, int length ) {
 }
 
 // --- Default Constructor --- //
-SPIdev::SPIdev() {
+mcp3008Spi::mcp3008Spi() {
 
   this->mode = SPI_MODE_0;
   this->bitsPerWord = 8;
@@ -158,7 +158,7 @@ SPIdev::SPIdev() {
 }
 
 // --- Overloaded Constructor --- //
-SPIdev::SPIdev( string devspi, unsigned char spiMode, 
+mcp3008Spi::mcp3008Spi( string devspi, unsigned char spiMode, 
                         unsigned int spiSpeed, unsigned char spibitsPerWord ) {
 
   this->mode = spiMode;
@@ -170,7 +170,7 @@ SPIdev::SPIdev( string devspi, unsigned char spiMode,
 }
 
 // --- Destructor --- //
-SPIdev::~SPIdev() {
+mcp3008Spi::~mcp3008Spi() {
 
   this->spiClose();
 

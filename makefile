@@ -1,8 +1,8 @@
-all: YeET
+CFLAGS = -Wall -lncurses
 
-YeET:
-  mkdir -p bin
-  g++ -Wall -o outbin src/SPIdev.cpp src/Oscilloscope.cpp -lncurses
+all:
+	mkdir -p bin
+	g++ -o bin/out src/mcp3008Spi.cpp src/Oscilloscope.cpp $(CFLAGS)
 
 clean:
-  rm -r bin
+	rm -r bin

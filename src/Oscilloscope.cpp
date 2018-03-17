@@ -25,7 +25,7 @@
  *    github.com/halherta/RaspberryPi-mcp3008Spi
  *
  * */
-#include "SPIdev.h"
+#include "mcp3008Spi.h"
 #include <time.h>
 #include <ncurses.h>
 #include <vector>
@@ -289,7 +289,7 @@ int main( void ) {
   int in_char = 0; 
 
   // Get SPIdev input
-  SPIdev a2d( "/dev/spidev0.0", SPI_MODE_0, 1e6, 8 );
+  mcp3008Spi a2d( "/dev/spidev0.0", SPI_MODE_0, 1e6, 8 );
   int a2dVal = 0;
   int a2dChan = 7;
   unsigned char data[3];
